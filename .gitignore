@@ -1,0 +1,7 @@
+.direnv/*
+!.direnv/.git-keep
+
+
+# Added by cargo
+
+/target
