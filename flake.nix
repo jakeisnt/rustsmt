@@ -14,8 +14,9 @@
         lib = nixpkgs.lib;
         package = with pkgs; callPackage ./. { inherit pkgs; };
       in {
-        devShell = pkgs.mkShell {
-          buildInputs = with pkgs; [ ];
+        devShell = with pkgs; mkShell {
+          buildInputs = [ cargo rustup rustc z3 rustfmt rust-analyzer lld clang llvmPackages.libclang ];
+          LIBCLANG_PATH = "${llvmPackages.libclang}/lib";
         };
         defaultPackage = package;
       });
