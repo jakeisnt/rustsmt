@@ -8,8 +8,7 @@ fn get_str_from_model<'v>(model: &Model, var: &ast::String<'v>) -> String {
 }
 
 fn main() {
-    println!("Hello, world!");
-// https://blog.xaviermaso.com/2019/11/12/Use-SMT-Solvers-to-generate-crossword-grids-(2).html
+    // https://blog.xaviermaso.com/2019/11/12/Use-SMT-Solvers-to-generate-crossword-grids-(2).html
     let ctx = &Context::new(&Config::default());
     let solver = Solver::new(ctx);
 
@@ -24,7 +23,6 @@ fn main() {
 
     print!("{}", solver.check() == z3::SatResult::Sat);
     solver.assert(formula);
-
 
     if let Some(model) = solver.get_model() {
         print!("{}", get_str_from_model(&model, &horizontal));
